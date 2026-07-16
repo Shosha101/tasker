@@ -28,3 +28,15 @@ lib/
 flutter pub get
 flutter run
 ```
+
+## 📦 Packages
+
+| Package | Version |
+|---|---|
+| `provider` | ^6.1.2 |
+| `get_it` | ^8.0.2 |
+| `hive_flutter` | ^1.1.0 |
+| `path_provider` | ^2.1.5 |
+| `logger` | ^1.0.0 |
+| `cupertino_icons` | ^1.0.8 |
+
