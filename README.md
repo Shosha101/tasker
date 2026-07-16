@@ -1,16 +1,30 @@
-# tasker
+# Tasker — Task Scheduling App
 
-this app for scheduling tasks
+A lightweight **Flutter** task manager with offline persistence.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- ✅ Create, complete, and delete tasks
+- 🔎 Live search across your task list
+- 💾 Offline storage with **Hive** (code-generated type adapters)
+- 🎨 Custom theming + splash screen
 
-A few resources to get you started if this is your first Flutter project:
+## Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Provider** for state management, **get_it** for service location, a dedicated `HiveService` and navigation service.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+lib/
+├── model/       # task model (+ generated Hive adapter)
+├── provider/    # task state
+├── screens/     # splash, task list
+├── services/    # hive, navigation
+└── widget/      # todo item, search field
+```
+
+## Run it
+
+```bash
+flutter pub get
+flutter run
+```
