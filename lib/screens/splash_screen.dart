@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:logger/logger.dart';
 import '../services/hive_service.dart';
+import '../themes/app_theme.dart';
 
 class SplashScreen extends StatefulWidget {
   final VoidCallback onInitializationComplete;
@@ -53,17 +54,48 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Container(
-          height: 250,
-          width: 250,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/logo.png'),
-              fit: BoxFit.contain,
-            ),
+    // Shown before the app (and its MaterialApp) exists, so it sets its own
+    // text direction and font.
+    return Directionality(
+      textDirection: TextDirection.ltr,
+      child: Container(
+        color: AppColors.background,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 112,
+                height: 112,
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(32),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppColors.primary.withValues(alpha: 0.28),
+                      blurRadius: 28,
+                      offset: const Offset(0, 12),
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.check_rounded,
+                  color: Colors.white,
+                  size: 68,
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                'Tasker',
+                style: TextStyle(
+                  fontFamily: AppTheme.fontFamily,
+                  fontSize: 34,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.text,
+                  decoration: TextDecoration.none,
+                ),
+              ),
+            ],
           ),
         ),
       ),

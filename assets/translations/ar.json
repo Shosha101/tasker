@@ -1,0 +1,22 @@
+{
+  "app_name": "تاسكر",
+  "other_language": "English",
+  "search_hint": "ابحث عن مهمة",
+  "filter_all": "الكل",
+  "filter_active": "النشطة",
+  "filter_done": "المكتملة",
+  "completed_section": "المكتملة",
+  "add_hint": "أضف مهمة جديدة",
+  "add": "إضافة",
+  "empty_title": "لا توجد مهام بعد",
+  "empty_body": "أضف أول مهمة لك من الأسفل.",
+  "no_results": "لا توجد مهام مطابقة",
+  "task_details": "تفاصيل المهمة",
+  "status_active": "نشطة",
+  "status_done": "مكتملة",
+  "mark_done": "تحديد كمكتملة",
+  "mark_active": "إعادتها نشطة",
+  "delete": "حذف",
+  "close": "إغلاق",
+  "task_deleted": "تم حذف المهمة"
+}

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tasker/provider/task_provider.dart';
@@ -6,9 +7,20 @@ import 'package:tasker/screens/task_list_screen.dart';
 import 'package:tasker/services/navigation_services.dart';
 import 'package:tasker/themes/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+
   runApp(SplashScreen(onInitializationComplete: () {
-    runApp(MyApp());
+    runApp(
+      EasyLocalization(
+        supportedLocales: const [Locale('ar'), Locale('en')],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en'),
+        startLocale: const Locale('ar'),
+        child: MyApp(),
+      ),
+    );
   }));
 }
 
@@ -27,6 +39,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Tasker',
         theme: AppTheme.lightTheme,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         routes: {
           '/main': (BuildContext context) => TaskListScreen(),
         },

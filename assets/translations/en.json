@@ -1,0 +1,22 @@
+{
+  "app_name": "Tasker",
+  "other_language": "العربية",
+  "search_hint": "Search for task",
+  "filter_all": "All",
+  "filter_active": "Active",
+  "filter_done": "Done",
+  "completed_section": "Completed",
+  "add_hint": "Add a new task",
+  "add": "Add",
+  "empty_title": "No tasks yet",
+  "empty_body": "Add your first one below.",
+  "no_results": "No matching tasks",
+  "task_details": "Task details",
+  "status_active": "Active",
+  "status_done": "Done",
+  "mark_done": "Mark as done",
+  "mark_active": "Mark as active",
+  "delete": "Delete",
+  "close": "Close",
+  "task_deleted": "Task deleted"
+}

@@ -1,6 +1,9 @@
 // search_textfield_widget.dart
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+
+import '../themes/app_theme.dart';
 
 class SearchTextFieldWidget extends StatefulWidget {
   final ValueChanged<String> onSearchChanged;
@@ -26,7 +29,6 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
     _controller.addListener(_onTextChanged);
   }
 
-
   @override
   void dispose() {
     _debounceTimer?.cancel();
@@ -47,68 +49,37 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
 
   @override
   Widget build(BuildContext context) {
+    OutlineInputBorder border(Color color, [double width = 1]) {
+      return OutlineInputBorder(
+        borderRadius: BorderRadius.circular(18),
+        borderSide: BorderSide(color: color, width: width),
+      );
+    }
+
     return TextField(
       controller: _controller,
       decoration: InputDecoration(
-        fillColor: Colors.white,
-        focusColor: Colors.white,
-        hoverColor: Colors.white,
-        contentPadding: const EdgeInsets.only(left: 20),
-        hintStyle: const TextStyle(
-          letterSpacing: 2.0,
-          color: Color.fromRGBO(163, 157, 157, 1.0),
+        filled: true,
+        fillColor: AppColors.surface,
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
         ),
-        hintText: 'Search for task',
-        suffixIcon: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: Icon(
-                Icons.search,
-                color: Color.fromRGBO(0, 128, 128, 1),
-              ),
-            ),
-            if (_controller.text.isNotEmpty)
-              IconButton(
+        hintStyle: const TextStyle(color: AppColors.hint, fontSize: 15),
+        hintText: context.tr('search_hint'),
+        prefixIcon: const Icon(Icons.search, color: AppColors.hint),
+        suffixIcon: _controller.text.isEmpty
+            ? null
+            : IconButton(
                 onPressed: () {
                   _controller.clear();
                   widget.onSearchChanged('');
                 },
-                icon: const Icon(
-                  Icons.close,
-                  color: Color.fromRGBO(0, 128, 128, 1),
-                ),
+                icon: const Icon(Icons.close, color: AppColors.muted),
               ),
-          ],
-        ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Color.fromRGBO(0, 128, 128, 1),
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Color.fromRGBO(0, 128, 128, 1),
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-        ),
-        enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(20),
-          ),
-          borderSide: BorderSide(
-            color: Color.fromRGBO(0, 128, 128, 1),
-            width: 2.0,
-          ),
-        ),
+        border: border(AppColors.border),
+        enabledBorder: border(AppColors.border),
+        focusedBorder: border(AppColors.primary, 1.5),
       ),
     );
   }
